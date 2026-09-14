@@ -6,7 +6,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useSignOutControllerSignOutCurrentSession } from "@/lib/api/generated/sandicts-api/auth/auth";
 import { isSandictsApiError } from "@/lib/api/runtime/sandicts-api-error";
 import { removeTerminalAuthSessionCache } from "@/lib/auth/auth-session-cache";
-import { resetInitialAuthSession } from "@/lib/auth/auth-session-provider";
+import { resetInitialAuthSessionPromise } from "@/lib/auth/auth-session-provider";
 import { clearAuthSession } from "@/lib/auth/auth-session-store";
 import { APP_ROUTES } from "@/lib/routes/app-routes";
 
@@ -19,7 +19,7 @@ function useSignOut() {
   const queryClient = useQueryClient();
   const router = useRouter();
   const finalizeSignOut = useCallback(() => {
-    resetInitialAuthSession();
+    resetInitialAuthSessionPromise();
     clearAuthSession();
     removeTerminalAuthSessionCache(queryClient);
     router.replace(APP_ROUTES.public.signIn);

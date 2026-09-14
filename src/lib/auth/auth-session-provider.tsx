@@ -136,7 +136,7 @@ function ensureInitialAuthSession() {
   return initialAuthSessionPromise;
 }
 
-function resetInitialAuthSession() {
+function resetInitialAuthSessionPromise() {
   initialAuthSessionPromise = null;
 }
 
@@ -151,7 +151,7 @@ function toProjection(
 
 export {
   AuthSessionProvider,
-  resetInitialAuthSession,
+  resetInitialAuthSessionPromise,
   useAuthSession,
   useOptionalAuthSession,
 };
