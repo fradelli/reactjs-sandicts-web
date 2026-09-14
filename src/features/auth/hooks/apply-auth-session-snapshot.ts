@@ -3,7 +3,7 @@ import { adaptAuthSessionSnapshot } from "@/lib/auth/auth-session.adapters";
 import { synchronizeAuthSessionCache } from "@/lib/auth/auth-session-cache";
 import { setAuthSession } from "@/lib/auth/auth-session-store";
 
-function persistAuthSession(queryClient: QueryClient, value: unknown) {
+function applyAuthSessionSnapshot(queryClient: QueryClient, value: unknown) {
   const authSession = adaptAuthSessionSnapshot(value);
 
   synchronizeAuthSessionCache(queryClient, {
@@ -13,4 +13,4 @@ function persistAuthSession(queryClient: QueryClient, value: unknown) {
   setAuthSession(authSession);
 }
 
-export { persistAuthSession };
+export { applyAuthSessionSnapshot };

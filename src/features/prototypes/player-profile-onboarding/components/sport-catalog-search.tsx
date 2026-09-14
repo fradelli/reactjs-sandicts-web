@@ -31,8 +31,8 @@ import type {
   SportOption,
 } from "../player-profile-onboarding-prototype.types";
 import {
-  filterSports,
-  findSport,
+  searchActiveSportsByName,
+  findActiveSportById,
 } from "../player-profile-onboarding-prototype.utils";
 import { useMediaQuery } from "../hooks/use-media-query";
 
@@ -205,9 +205,9 @@ function SportCatalogSearch({
     scenarioId === "searchNoResults" ? "Natação" : "",
   );
   const [activeIndex, setActiveIndex] = useState(0);
-  const selectedSport = findSport(sports, value);
+  const selectedSport = findActiveSportById(sports, value);
   const filteredSports = useMemo(
-    () => filterSports(sports, query),
+    () => searchActiveSportsByName(sports, query),
     [query, sports],
   );
 

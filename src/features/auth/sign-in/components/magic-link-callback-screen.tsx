@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useConsumeMagicLinkControllerConsume } from "@/lib/api/generated/sandicts-api/auth/auth";
 import { isSandictsApiError } from "@/lib/api/runtime/sandicts-api-error";
 import { clearGoogleOneTapState } from "@/features/auth/google-one-tap/google-one-tap-storage";
-import { persistAuthSession } from "@/features/auth/hooks/auth-session-mutation-handlers";
+import { applyAuthSessionSnapshot } from "@/features/auth/hooks/apply-auth-session-snapshot";
 import { useQueryClient } from "@tanstack/react-query";
 import { APP_ROUTES } from "@/lib/routes/app-routes";
 import { signInScreenStyles } from "../sign-in-screen.styles";
@@ -45,7 +45,7 @@ function MagicLinkCallbackScreen() {
         const authSession = await consumeMutation.mutateAsync({
           data: { token },
         });
-        persistAuthSession(queryClient, authSession);
+        applyAuthSessionSnapshot(queryClient, authSession);
         clearGoogleOneTapState();
         tokenRef.current = null;
         setState("routing");

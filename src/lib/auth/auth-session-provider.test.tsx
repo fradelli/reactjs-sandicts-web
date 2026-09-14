@@ -10,7 +10,7 @@ import { createQueryClient } from "@/lib/query/query-client";
 import { queryKeys } from "@/lib/query/query-keys";
 import {
   AuthSessionProvider,
-  resetInitialAuthSession,
+  resetInitialAuthSessionPromise,
   useAuthSession,
 } from "./auth-session-provider";
 import { resetAuthSessionRuntime } from "./auth-session-store";
@@ -33,14 +33,14 @@ describe("AuthSessionProvider", () => {
   beforeEach(() => {
     queryClient = createQueryClient();
     fetchMock.mockReset();
-    resetInitialAuthSession();
+    resetInitialAuthSessionPromise();
     resetAuthSessionRuntime();
     vi.stubGlobal("fetch", fetchMock);
   });
 
   afterEach(() => {
     queryClient.clear();
-    resetInitialAuthSession();
+    resetInitialAuthSessionPromise();
     resetAuthSessionRuntime();
     vi.unstubAllGlobals();
   });

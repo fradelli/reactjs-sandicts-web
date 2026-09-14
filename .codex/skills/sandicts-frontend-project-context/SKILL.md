@@ -36,6 +36,15 @@ documents linked from it.
 10. When changing repository skills, validate the edited skill folder with a
    skill validation script when available.
 
+## Code Semantics Contract
+
+Before adding or renaming functions, hooks, files, or domain contracts, read
+`fradelli/sandicts-docs:docs/engineering/code-semantics.md` (in the multi-repo
+workspace: `../sandicts-docs/docs/engineering/code-semantics.md`). Apply its
+criteria to changed code and update callers and existing tests. In particular,
+keep simulated prototype operations and fixture IDs distinct from real API
+commands and contract values. Retain generic names for reusable technical UI.
+
 ## Code Organization Guardrail
 
 Before adding or moving implementation files:

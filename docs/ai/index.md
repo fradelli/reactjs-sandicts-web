@@ -33,6 +33,7 @@ repository.
 
 | Document | Role |
 | --- | --- |
+| `fradelli/sandicts-docs:docs/engineering/code-semantics.md` | Shared naming criteria and prototype/API vocabulary boundaries |
 | `docs/ai/project-context.md` | Frontend repository setup, ownership, and boundaries |
 | `docs/ai/jira-operating-workflow.md` | Direct Jira workflow for known `KAN-*` work |
 | `docs/ai/ci-cd/security-audit-remediation.md` | Isolated frontend dependency-security remediation workflow |
